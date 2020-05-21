@@ -1,32 +1,55 @@
-/**
- * Some predefined delays (in milliseconds).
- */
-export enum Delays {
-  Short = 500,
-  Medium = 2000,
-  Long = 5000,
+// Example 01
+import naturalNumbersGenerator from './01-natural-numbers-generator';
+
+const first10 = naturalNumbersGenerator(1, 10);
+
+for (const number of first10) {
+  console.log(number);
 }
 
-/**
- * Returns a Promise<string> that resolves after given time.
- *
- * @param {string} name - A name.
- * @param {number=} [delay=Delays.Medium] - Number of milliseconds to delay resolution of the Promise.
- * @returns {Promise<string>}
- */
-function delayedHello(
-  name: string,
-  delay: number = Delays.Medium,
-): Promise<string> {
-  return new Promise((resolve: (value?: string) => void) =>
-    setTimeout(() => resolve(`Hello, ${name}`), delay),
-  );
-}
+// Example 02
+import base2 from './02-base2-generator';
 
-// Below are examples of using ESLint errors suppression
-// Here it is suppressing missing return type definitions for greeter function
+const base2Numbers = base2(0);
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export async function greeter(name: string) {
-  return await delayedHello(name, Delays.Long);
-}
+console.log(base2Numbers.next());
+console.log(base2Numbers.next());
+console.log(base2Numbers.next());
+console.log(base2Numbers.next());
+console.log(base2Numbers.next());
+
+// Example 03
+import teamGenerator from './03-countable-yields';
+
+const winnerTeam = teamGenerator();
+
+console.log(winnerTeam.next().value);
+console.log(winnerTeam.next().value);
+console.log(winnerTeam.next().value);
+console.log(winnerTeam.next().value);
+console.log(winnerTeam.next().value);
+console.log(winnerTeam.next().value);
+console.log(winnerTeam.next().done);
+
+// Example 04
+import writerConsumer from './04-consumer';
+
+const writer = writerConsumer();
+writer.next(); // Starts the observer
+writer.next("Dear reader, how is this lightning talk going?"); // receives value as yield inside the gen
+writer.next();
+
+// Example 05
+import letterGenerator from './05-return-throw';
+
+const letters = letterGenerator();
+console.log(letters.next().value);
+// ...
+console.log(letters.next().value);
+letters.return(0);
+console.log(letters.next().value);
+console.log(letters.next().done);
+
+const lettersThrow = letterGenerator();
+console.log(lettersThrow.next().value);
+lettersThrow.throw("Stop now, it's late!");

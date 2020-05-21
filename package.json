@@ -18,12 +18,15 @@
     "rimraf": "~3.0.2",
     "ts-jest": "~25.5.1",
     "tsutils": "~3.17.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "rxjs": "^6.5.3"
   },
   "scripts": {
     "clean": "rimraf coverage build tmp",
     "build": "tsc -p tsconfig.release.json",
     "build:watch": "tsc -w -p tsconfig.release.json",
+    "start": "node build/src/main.js",
+    "primes": "node build/src/primes.js",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
