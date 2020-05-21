@@ -27,8 +27,11 @@ const isPalindromic = (n: number): boolean  => {
 };
 
 // 10 has 2 digits, 101 has 3 digits, 1 has 1 digit
-const countDigits = (n: number): number =>
-  Math.log(n) * Math.LOG10E + 1 | 0;
+const countDigits = (n: number): number => {
+  const positiveNumber = n < 0 ? (n * -1) : n;
+
+  return Math.log(positiveNumber) * Math.LOG10E + 1 | 0;
+}
 
 // Prime numbers to the infinity and beyond!
 function* infinitePrimeNumbers(): Generator<number> {
@@ -44,6 +47,7 @@ function* infinitePrimeNumbers(): Generator<number> {
 
 export default infinitePrimeNumbers;
 export {
+  isPrime,
   isPalindromic,
   countDigits
 };
