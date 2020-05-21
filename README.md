@@ -5,6 +5,39 @@
 [![Build Status - GitHub Actions][gha-badge]][gha-ci]
 [![Sponsor][sponsor-badge]][sponsor]
 
+# Quick start
+Before all, install packages:
+
+```
+npm install
+```
+
+Then build the project:
+
+```
+npm run build
+```
+
+Now, you are able to run tests:
+
+```
+npm run test
+```
+
+Or start the main process:
+
+```
+npm run start
+```
+
+Or run the prime generator process:
+
+```
+npm run primes
+```
+
+Main code is inside `./src/` folder.
+
 # node-typescript-boilerplate
 
 👩🏻‍💻 Developer Ready: A comprehensive template. Works out of the box for most [Node.js][nodejs] projects.
